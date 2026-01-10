@@ -139,6 +139,14 @@ void print_ver(vector<long double>& x) {
     }
     cout << '\n';
 }
+void print_ver(vector<long double>& x, ofstream &fout) {
+    ll n = x.size();
+    for (int i = 0; i < n; i++) {
+        fout << fixed << setprecision(10) << x[i];
+        fout << (i == n - 1 ? "" : ", ");
+    }
+    fout << '\n';
+}
 vector<long double> exac_solution(vector<vector<long double>>& A, vector<long double>& b) {
     int n = A.size();
     const long double eps = 1e-10;
@@ -266,19 +274,22 @@ void solve() {
         // cout << "Intermediate value\n";
         // cout << F(A, b, x0) << '\n';
     }
-	cout << '\n';
+	fout_L2_error.close();
+	fout_log_L2_error.close();
 	
-    cout << "Founded minimum point\n";
-    print_ver(x0);
+	ofstream fout("output.txt");
 	
-    cout << "Founded minimum value\n";
-    cout << F(A, b, x0) << '\n';
+    fout << "Founded minimum point\n";
+    print_ver(x0, fout);
 	
-	cout << "Exact solution\n";
-    print_ver(exact_solution);
+    fout << "Founded minimum value\n";
+    fout << F(A, b, x0) << '\n';
 	
-    cout << "Exact minimum value\n";
-    cout << F(A, b, exact_solution) << '\n';
+	fout << "Exact solution\n";
+    print_ver(exact_solution, fout);
+	
+    fout << "Exact minimum value\n";
+    fout << F(A, b, exact_solution) << '\n';
 }
 int main() {
     int t;
