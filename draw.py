@@ -26,16 +26,16 @@ if __name__ == '__main__':
     ax.grid()
     plt.show()
         
-    # for line in f2:
-        # x, y = map(float, line.split())
-        # X2.append(x)
-        # Y2.append(y)
+    for line in f2:
+        x, y = map(float, line.split())
+        X2.append(x)
+        Y2.append(y)
         
-    # fig, ax = plt.subplots()
+    fig, ax = plt.subplots()
         
-    # ax.plot(X2, Y2, label='log_L2 error')
-    # ax.set_xlabel('Iterations')
-    # ax.set_ylabel('log_L2 error')
-    # ax.legend()
-    # ax.grid()
-    # plt.show()
+    ax.plot(X2, Y2, label='log_L2 error')
+    ax.set_xlabel('Iterations')
+    ax.set_ylabel('log_L2 error')
+    ax.legend()
+    ax.grid()
+    plt.show()
