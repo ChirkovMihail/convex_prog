@@ -113,7 +113,6 @@ vector<long double> operator*(const vector<vector<long double>>& A, const vector
     }
     return y;
 }
-
 vector<long double> operator*(const vector<long double>& x, const vector<vector<long double>>& A) {
     const int n = A.size();
     const int m = A[0].size();
@@ -290,6 +289,8 @@ void solve() {
 	
     fout << "Exact minimum value\n";
     fout << F(A, b, exact_solution) << '\n';
+	
+	fout.close();
 }
 int main() {
     int t;
